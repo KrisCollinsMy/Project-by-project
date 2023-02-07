@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Flipper</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <div id="navbar">
+      <h2 id="logo">Color Flipper</h2>
+      <div>
+        <h2 id="simple-colors">Simple</h2>
+        <h2 id="hex-colors">Hex</h2>
+      </div>
+    </div>
+    <div id="background-color">
+      <h3 id="html-color-code">Background Color :</h3>
+      <button id="color-change-button">Click me</button>
+    </div>
+    <script>
+      const button = document.getElementById("color-change-button");
+      const backgroundColor = document.getElementById("background-color");
+      const htmlColorCode = document.getElementById("html-color-code");
+
+      const color = ["red", "orange", "blue", "green", "yellow"];
+      button.addEventListener("click", () => {
+        let selectedColor = color[Math.floor(Math.random() * color.length)];
+        backgroundColor.style.backgroundColor = selectedColor;
+        htmlColorCode.innerHTML = "Background Color : " + selectedColor;
+      });
+    </script>
+  </body>
+</html>
