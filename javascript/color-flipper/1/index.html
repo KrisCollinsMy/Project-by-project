@@ -9,28 +9,62 @@
     <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
-    <div id="navbar">
+    <div id="navbar-section">
       <h2 id="logo">Color Flipper</h2>
       <div>
-        <h2 id="simple-colors">Simple</h2>
-        <h2 id="hex-colors">Hex</h2>
+        <h2 id="simple-colors-tab">Simple</h2>
+        <h2 id="hex-colors-tab">Hex</h2>
       </div>
     </div>
-    <div id="background-color">
-      <h3 id="html-color-code">Background Color :</h3>
-      <button id="color-change-button">Click me</button>
+    <div id="background-color-container">
+      <h3 id="background-color-description">Background Color :</h3>
+      <button id="toggle-background-color-button">Click me</button>
     </div>
     <script>
-      const button = document.getElementById("color-change-button");
-      const backgroundColor = document.getElementById("background-color");
-      const htmlColorCode = document.getElementById("html-color-code");
+      const toggleBackgroundColorButton = document.getElementById(
+        "toggle-background-color-button"
+      );
+      const backgroundColorContainer = document.getElementById(
+        "background-color-container"
+      );
+      const backgroundColorDescription = document.getElementById(
+        "background-color-description"
+      );
+      const simpleColorTab = document.getElementById("simple-colors-tab");
+      const hexColorTab = document.getElementById("hex-colors-tab");
 
-      const color = ["red", "orange", "blue", "green", "yellow"];
-      button.addEventListener("click", () => {
-        let selectedColor = color[Math.floor(Math.random() * color.length)];
-        backgroundColor.style.backgroundColor = selectedColor;
-        htmlColorCode.innerHTML = "Background Color : " + selectedColor;
-      });
+      const setBackgroundColor = (selectedTabId) => {
+        const simpleColors = ["red", "orange", "blue", "green", "yellow"];
+        const randomColor =
+          selectedTabId === "hex-colors-tab"
+            ? "#" + Math.floor(Math.random() * 16777215).toString(16)
+            : simpleColors[Math.floor(Math.random() * simpleColors.length)];
+        backgroundColorContainer.style.backgroundColor = randomColor;
+        backgroundColorDescription.innerHTML =
+          "Background Color : " + randomColor;
+      };
+
+      const toggleColorSet = (selectedTabId) => {
+        [simpleColorTab, hexColorTab].forEach((element) => {
+          element.style.backgroundColor =
+            element.id === selectedTabId ? "rgb(53, 134, 228)" : "white";
+          element.style.color =
+            element.id === selectedTabId ? "white" : "black";
+        });
+
+        setBackgroundColor(selectedTabId);
+      };
+
+      simpleColorTab.addEventListener("click", () =>
+        toggleColorSet("simple-colors-tab")
+      );
+      hexColorTab.addEventListener("click", () =>
+        toggleColorSet("hex-colors-tab")
+      );
+      toggleBackgroundColorButton.addEventListener("click", setBackgroundColor);
+
+      //default
+      toggleColorSet("simple-colors-tab");
     </script>
   </body>
 </html>

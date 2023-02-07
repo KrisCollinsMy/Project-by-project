@@ -23,7 +23,7 @@ body {
   font-family: $primary-font-family;
 }
 
-#navbar {
+#navbar-section {
   #logo {
     font-weight: 400;
   }
@@ -41,19 +41,14 @@ body {
     @include flex-template(space-between);
     background-color: blue;
 
-    #simple-colors {
-      @include navbar-item(rgb(53, 134, 228), white);
-      font-weight: 400;
-    }
-
-    #hex-colors {
+    h2 {
       @include navbar-item(white, black);
       font-weight: 400;
     }
   }
 }
 
-#background-color {
+#background-color-container {
   box-sizing: border-box;
   height: calc(100vh - 50px);
   @include flex-template(center, column);
