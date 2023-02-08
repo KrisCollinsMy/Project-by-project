@@ -28,6 +28,7 @@
     - Autoprefix the CSS file : `postcss main.min.css --replace --use autoprefixer`
     - Lint the CSS file in the CLI: `npx stylelint "**/*.css"`
     - Automatically fix, where possible with ordering: `npx stylelint --fix "main.scss"`
+13. Responsive web design
 
 # Key Concepts to explore
 
@@ -54,3 +55,20 @@
     - For SASS - `sudo npm install --save-dev stylelint stylelint-config-standard-scss`
 3. To install postcss and autoprefixer : `npm install -g postcss-cli autoprefixer`
 4. Install stylelint order : `npm install stylelint-order --save-dev`, `npm install --save-dev stylelint-config-idiomatic-order`
+5. Responsive web design media queries
+    `/* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+    }
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+    }
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+    }
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+    }`
+
