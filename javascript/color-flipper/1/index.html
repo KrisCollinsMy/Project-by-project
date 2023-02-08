@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Color Flipper</title>
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="assets/styles/css/normalize.css" />
+    <link rel="stylesheet" href="assets/styles/css/main.min.css" />
   </head>
   <body>
     <div id="navbar-section">
@@ -33,10 +33,12 @@
       const simpleColorTab = document.getElementById("simple-colors-tab");
       const hexColorTab = document.getElementById("hex-colors-tab");
 
-      const setBackgroundColor = (selectedTabId) => {
+      let currentSelectedTabId;
+
+      const setBackgroundColor = () => {
         const simpleColors = ["red", "orange", "blue", "green", "yellow"];
         const randomColor =
-          selectedTabId === "hex-colors-tab"
+          currentSelectedTabId === "hex-colors-tab"
             ? "#" + Math.floor(Math.random() * 16777215).toString(16)
             : simpleColors[Math.floor(Math.random() * simpleColors.length)];
         backgroundColorContainer.style.backgroundColor = randomColor;
@@ -45,6 +47,7 @@
       };
 
       const toggleColorSet = (selectedTabId) => {
+        currentSelectedTabId = selectedTabId;
         [simpleColorTab, hexColorTab].forEach((element) => {
           element.style.backgroundColor =
             element.id === selectedTabId ? "rgb(53, 134, 228)" : "white";
@@ -52,7 +55,7 @@
             element.id === selectedTabId ? "white" : "black";
         });
 
-        setBackgroundColor(selectedTabId);
+        setBackgroundColor();
       };
 
       simpleColorTab.addEventListener("click", () =>
@@ -63,7 +66,7 @@
       );
       toggleBackgroundColorButton.addEventListener("click", setBackgroundColor);
 
-      //default
+      //on load
       toggleColorSet("simple-colors-tab");
     </script>
   </body>
