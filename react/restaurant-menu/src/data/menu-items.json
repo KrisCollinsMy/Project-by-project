@@ -1,0 +1,67 @@
+[
+    {
+      "id": 1,
+      "photo": "item-1.jpeg",
+      "name": "Buttermilk pancakes",
+      "category": "breakfast",
+      "price": 15,
+      "description": "I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed"
+    },
+    {
+      "id": 2,
+      "photo": "item-2.jpeg",
+      "name": "Burgers & Fries",
+      "category": "lunch",
+      "price": 15,
+      "description": "I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed"
+    },
+    {
+      "id": 3,
+      "photo": "item-3.jpeg",
+      "name": "Godzilla Milkshake",
+      "category": "shakes",
+      "price": 15,
+      "description": "I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed"
+    },
+    {
+      "id": 4,
+      "photo": "item-4.jpeg",
+      "name": "Country Delight",
+      "category": "breakfast",
+      "price": 15,
+      "description": "I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed"
+    },
+    {
+      "id": 5,
+      "photo": "item-5.jpeg",
+      "name": "Egg Attack",
+      "category": "lunch",
+      "price": 15,
+      "description": "I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed"
+    },
+    {
+      "id": 6,
+      "photo": "item-6.jpeg",
+      "name": "Oreo Dream",
+      "category": "shakes",
+      "price": 15,
+      "description": "I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed"
+    },
+    {
+      "id": 7,
+      "photo": "item-7.jpeg",
+      "name": "Bacon Overflow",
+      "category": "lunch",
+      "price": 15,
+      "description": "I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed"
+    },
+    {
+      "id": 8,
+      "photo": "item-8.jpeg",
+      "name": "American Classic",
+      "category": "lunch",
+      "price": 15,
+      "description": "I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed"
+    }
+  ]
+  

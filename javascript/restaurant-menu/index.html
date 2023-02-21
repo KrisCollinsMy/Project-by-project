@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Menu</title>
+    <link rel="stylesheet" href="assets/styles/css/normalize.css" />
+    <link rel="stylesheet" href="assets/styles/css/main.min.css" />
+  </head>
+  <body>
+    <!-- title -->
+    <div class="menu-title">
+      <h1>Our Menu</h1>
+      <hr />
+    </div>
+    <!-- menu button filters section -->
+    <div id="menu-category-container">
+      <button class="menu-food-category" data-id="all" type="button">
+        All
+      </button>
+    </div>
+    <!-- menu items section -->
+    <section id="menu-items"></section>
+    <script>
+      const fetchMenuData = async () => {
+        let menuData = await fetch("./assets/data/menu-items.json")
+          .then((response) => {
+            return response.json();
+          })
+          .catch(function (error) {
+            console.warn(error);
+          });
+
+        return menuData;
+      };
+
+      fetchMenuData().then((menuData) => {
+        displayMenu(menuData);
+      });
+
+      let menuItemsList;
+
+      function displayMenu(menuData) {
+        menuItemsList = menuData;
+        displayMenuButtonsSection();
+        displayMenuItemsSection("all");
+
+        //filter by food category
+        const menuCategoryButton = document.querySelectorAll(
+          ".menu-food-category"
+        );
+        menuCategoryButton.forEach(function (btn) {
+          btn.addEventListener("click", function (event) {
+            displayMenuItemsSection(event.currentTarget.dataset.id);
+          });
+        });
+      }
+
+      function menuItems(foodCategory = "all") {
+        let menuItems = menuItemsList
+          .filter(function (item) {
+            return foodCategory != "all" ? item.category == foodCategory : item;
+          })
+          .map(function (item) {
+            let menuItem =
+              `<article class="menu-item">` +
+              `<img src="assets/images/${item.photo}" alt="country delight" />` +
+              `<div class="menu-item-description">` +
+              `<div class="menu-item-header">` +
+              `<h4>${item.name}</h4>` +
+              `<h4 class="menu-item-price">$${item.price}</h4>` +
+              `</div>` +
+              `<p>
+            ${item.description}
+          </p>` +
+              `</div>` +
+              `</article>`;
+            return menuItem;
+          });
+
+        return menuItems;
+      }
+
+      function menuFoodCategoryButtons() {
+        let menuCategories = menuItemsList.map(function (item) {
+          return item.category;
+        });
+
+        menuCategories = [...new Set(menuCategories)];
+
+        let menuCategoryButtons = menuCategories.map(function (category) {
+          let menuItem = `<button
+            class="menu-food-category"
+            data-id="${category}"
+            type="button"
+          >
+          ${category.charAt(0).toUpperCase() + category.slice(1)}
+          </button>`;
+          return menuItem;
+        });
+
+        return menuCategoryButtons;
+      }
+
+      function displayMenuItemsSection(foodCategory) {
+        const menuItemsSection = document.getElementById("menu-items");
+
+        let menuItemsArray = menuItems(foodCategory);
+        menuItemsSection.innerHTML = menuItemsArray.join("");
+      }
+
+      function displayMenuButtonsSection() {
+        const menuCategoryContainer = document.getElementById(
+          "menu-category-container"
+        );
+        menuCategoryContainer.innerHTML += menuFoodCategoryButtons().join("");
+      }
+    </script>
+  </body>
+</html>
